@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>She Can Foundation | Empower, Educate, Elevate</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fef9f5;   /* warm soft background */
+      color: #2c241f;
+      scroll-behavior: smooth;
+      line-height: 1.4;
+    }
+
+    /* animations keyframes */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(25px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 8px 20px rgba(230, 80, 100, 0.1); }
+      100% { box-shadow: 0 12px 28px rgba(230, 80, 100, 0.25); }
+    }
+
+    @keyframes floatImage {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header / nav (simple but modern) */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid rgba(230, 80, 100, 0.2);
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #D43F52, #B83B4A);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #a05e6b;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #3a2c27;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #D43F52;
+    }
+
+    /* buttons */
+    .btn-primary {
+      background: #D43F52;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 8px rgba(212, 63, 82, 0.2);
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: #b83547;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(212, 63, 82, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #D43F52;
+      color: #D43F52;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #D43F52;
+      color: white;
+    }
+
+    /* sections general */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #D43F52;
+      border-radius: 4px;
+    }
+
+    /* home section */
+    .home-grid {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.7s ease-out;
+    }
+
+    .home-content {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .home-content .badge {
+      background: #ffe2e6;
+      color: #b53b4a;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .home-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #2c1e1a;
+    }
+
+    .home-content p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #4e3e38;
+      margin-bottom: 28px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .home-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .home-image img {
+      max-width: 100%;
+      border-radius: 42px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+      animation: floatImage 4s infinite alternate ease-in-out;
+      width: 100%;
+      max-width: 440px;
+      object-fit: cover;
+    }
+
+    /* about section */
+    .about-container {
+      background: white;
+      border-radius: 48px;
+      padding: 48px 40px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1.5;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: #3d302b;
+    }
+
+    .about-highlight {
+      background: #fef1ef;
+      padding: 18px 24px;
+      border-radius: 28px;
+      margin-top: 20px;
+      border-left: 5px solid #D43F52;
+    }
+
+    .about-stats {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .stat-card {
+      background: #fef9f5;
+      padding: 20px;
+      border-radius: 32px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #D43F52;
+    }
+
+    /* volunteer section (join us) */
+    .volunteer-section {
+      background: linear-gradient(125deg, #fff2ef, #ffe9e5);
+      border-radius: 64px;
+      padding: 60px 48px;
+      text-align: center;
+    }
+
+    .volunteer-section h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .volunteer-section p {
+      max-width: 600px;
+      margin: 0 auto 32px auto;
+      font-size: 1.1rem;
+      color: #4a332d;
+    }
+
+    .join-form {
+      max-width: 500px;
+      margin: 32px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: white;
+      padding: 28px;
+      border-radius: 48px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .join-form input, .join-form select {
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 1px solid #e2cfca;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .join-form input:focus, .join-form select:focus {
+      border-color: #D43F52;
+      box-shadow: 0 0 0 3px rgba(212,63,82,0.2);
+    }
+
+    .success-message {
+      color: #1f8a4c;
+      background: #e0f3e9;
+      padding: 10px;
+      border-radius: 60px;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* footer */
+    footer {
+      background: #271e1b;
+      color: #f0e1dc;
+      padding: 48px 0 24px;
+      margin-top: 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #cfbcb5;
+      text-decoration: none;
+      line-height: 1.7;
+    }
+
+    .footer-col a:hover {
+      color: #ff9a86;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .social-icons span {
+      background: #3e2d28;
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: 0.2s;
+      cursor: default;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid #3e2b25;
+      font-size: 0.8rem;
+    }
+
+    /* responsive design */
+    @media (max-width: 850px) {
+      .container {
+        padding: 0 24px;
+      }
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .home-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .section-title {
+        text-align: center;
+        display: block;
+      }
+      .about-container {
+        text-align: center;
+      }
+      .volunteer-section {
+        padding: 40px 20px;
+      }
+    }
+
+    /* interactive hover & additional */
+    .stat-card:hover {
+      transform: translateY(-5px);
+      background: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    button, .btn-primary, .btn-outline {
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    /* hidden modal for popup (extra interactive) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-card {
+      background: white;
+      max-width: 400px;
+      width: 90%;
+      padding: 32px;
+      border-radius: 48px;
+      text-align: center;
+      animation: fadeInUp 0.3s;
+    }
+    .modal-card button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Simple Modal for "Join Us" confirmation feedback (extra interactive) -->
+<div id="thankyouModal" class="modal">
+  <div class="modal-card">
+    <h3 style="color:#D43F52;">✨ You're inspiring ✨</h3>
+    <p style="margin:16px 0">Thank you for joining the movement! Our team will reach out soon with volunteer opportunities.</p>
+    <button class="btn-primary" id="closeModalBtn" style="padding: 8px 24px;">Close</button>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h1>She Can Foundation</h1>
+        <span>Empower • Educate • Elevate</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Home Section -->
+  <section id="home">
+    <div class="container">
+      <div class="home-grid">
+        <div class="home-content">
+          <div class="badge">🌟 She Can, She Will</div>
+          <h1>Building futures <br> with courage & confidence.</h1>
+          <p>She Can Foundation provides a safe learning space for every girl and woman. No fear of rejection, no unrealistic expectations — just real growth and opportunities to lead.</p>
+          <div class="btn-group">
+            <a href="#volunteer" class="btn-primary">Join Us →</a>
+            <a href="#about" class="btn-outline">Learn More</a>
+          </div>
+        </div>
+        <div class="home-image">
+          <!-- One Image (meaningful illustration style) -->
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="She Can Foundation empowering women and girls">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About our mission</h2>
+      <div class="about-container">
+        <div class="about-text">
+          <p><strong>She Can Foundation</strong> was born from a simple belief: every young woman deserves a place where she can try, fail, learn, and shine — without judgment. We break barriers, create mentorship ecosystems, and provide skill-building workshops in tech, leadership, and entrepreneurship.</p>
+          <p>Through community-driven programs, we've reached 3,000+ girls across underserved regions, offering a supportive network that transforms potential into power.</p>
+          <div class="about-highlight">
+            💡 <strong>Our promise:</strong> No fear of rejection. No unrealistic expectations. Just compassion, learning, and real opportunities.
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <h3>12+</h3>
+            <p>Active chapters</p>
+          </div>
+          <div class="stat-card">
+            <h3>3,200+</h3>
+            <p>Lives impacted</p>
+          </div>
+          <div class="stat-card">
+            <h3>95%</h3>
+            <p>Feel more confident after our programs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer / Join Us Button Section + interactive join form -->
+  <section id="volunteer">
+    <div class="container">
+      <div class="volunteer-section">
+        <h2>✋ Join the movement</h2>
+        <p>Become a volunteer, mentor, or supporter. We welcome everyone who believes in a world where every girl can say "I can".</p>
+        <!-- extra interactive: Join Us Button and form combined -->
+        <div class="join-form" id="joinFormContainer">
+          <input type="text" id="volName" placeholder="Full name" required>
+          <input type="email" id="volEmail" placeholder="Email address" required>
+          <select id="volInterest">
+            <option value="mentor">Become a Mentor</option>
+            <option value="events">Event Volunteer</option>
+            <option value="ambassador">Campus Ambassador</option>
+            <option value="donor">Support as Donor</option>
+          </select>
+          <button class="btn-primary" id="submitVolunteerBtn">💖 Volunteer / Join Us</button>
+          <div id="formFeedback" style="font-size: 0.85rem; text-align: center;"></div>
+        </div>
+        <!-- additional call to action: a secondary join button just to ensure visible "Join Us Button" requirement -->
+        <div style="margin-top: 20px;">
+          <button id="floatingJoinBtn" class="btn-outline" style="background:white;">✨ Quick Join Us ✨</button>
+        </div>
+        <p style="margin-top: 24px; font-size: 0.85rem;">Together we create safe spaces — no experience required, only heart.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer Section -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>She Can Foundation</h4>
+        <p>Empowering women and girls through education, mentorship, and opportunities without fear.</p>
+        <div class="social-icons">
+          <span>📘</span>
+          <span>🐦</span>
+          <span>📸</span>
+          <span>💼</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#about">About</a></p>
+        <p><a href="#volunteer">Volunteer</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>hello@shecanfoundation.org</p>
+        <p>+1 (800) 234-5678</p>
+        <p>Mumbai | Delhi | Bengaluru</p>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 She Can Foundation — Courage over perfection. All hearts reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // JavaScript for interactive modal, form validation & additional page interactions (animations/responsive behaviour)
+  const modal = document.getElementById('thankyouModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const submitBtn = document.getElementById('submitVolunteerBtn');
+  const nameInput = document.getElementById('volName');
+  const emailInput = document.getElementById('volEmail');
+  const interestSelect = document.getElementById('volInterest');
+  const formFeedback = document.getElementById('formFeedback');
+  const floatingJoinBtn = document.getElementById('floatingJoinBtn');
+
+  function showModal() {
+    modal.style.display = 'flex';
+  }
+
+  function closeModalFunc() {
+    modal.style.display = 'none';
+  }
+
+  closeModalBtn.addEventListener('click', closeModalFunc);
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) closeModalFunc();
+  });
+
+  // handle join submission (both from main button & floating join)
+  function handleJoinSubmission() {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    if (!name) {
+      formFeedback.innerHTML = '<span style="color:#c23b22;">❌ Please enter your name.</span>';
+      return false;
+    }
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      formFeedback.innerHTML = '<span style="color:#c23b22;">❌ Please enter a valid email address.</span>';
+      return false;
+    }
+    // success simulation
+    formFeedback.innerHTML = '<span style="color:#1f8a4c;">✅ Thanks! You\'re now part of the She Can family. We\'ll be in touch 🎉</span>';
+    // reset form optional
+    nameInput.value = '';
+    emailInput.value = '';
+    interestSelect.selectedIndex = 0;
+    // show beautiful modal after short delay
+    setTimeout(() => {
+      showModal();
+    }, 300);
+    // clear feedback after 4 seconds but keep modal?
+    setTimeout(() => {
+      if (formFeedback.innerHTML.includes('Thanks')) {
+        formFeedback.innerHTML = '';
+      }
+    }, 5000);
+    return true;
+  }
+
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleJoinSubmission();
+  });
+
+  floatingJoinBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // scroll smoothly to volunteer section and highlight join form
+    document.getElementById('volunteer').scrollIntoView({ behavior: 'smooth' });
+    // small extra focus effect: pulse on join form
+    const joinDiv = document.querySelector('.join-form');
+    joinDiv.style.transition = '0.2s';
+    joinDiv.style.boxShadow = '0 0 0 3px #D43F52';
+    setTimeout(() => {
+      joinDiv.style.boxShadow = '';
+    }, 800);
+    // Optionally prefill if needed? not required but nice
+  });
+
+  // Additional interactive: nav links smooth scroll + active highlight
+  document.querySelectorAll('.nav-links a, .btn-primary[href="#volunteer"], .btn-outline[href="#about"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      if (hash && hash.startsWith('#')) {
+        e.preventDefault();
+        const targetId = hash.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // additional simple welcome console message (optional)
+  console.log("✨ She Can Foundation – built with genuine effort & care for all students. You belong here!");
+  
+  // Make responsive improvement + dynamic year in footer copyright? already there
+  // extra micro-interaction: stats hover plus parallax-ish but all good
+
+  // Optional: small interactive for about stats: animate on scroll (light)
+  const statNumbers = document.querySelectorAll('.stat-card h3');
+  const animateStats = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        card.style.transition = 'transform 0.2s';
+        // just add pop effect
+        card.style.transform = 'scale(1.02)';
+        setTimeout(() => { if(card) card.style.transform = ''; }, 200);
+        observer.unobserve(card);
+      }
+    });
+  };
+  const statObserver = new IntersectionObserver(animateStats, { threshold: 0.4 });
+  document.querySelectorAll('.stat-card').forEach(card => statObserver.observe(card));
+
+  // Also ensure Image alt meaningful
+  const mainImg = document.querySelector('.home-image img');
+  if(mainImg) {
+    mainImg.alt = "She Can Foundation illustration – women empowerment and learning together";
+  }
+</script>
+</body>
+</html>
